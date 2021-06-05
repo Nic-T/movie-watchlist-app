@@ -13,7 +13,7 @@ export default function MovieCard({ movie }) {
         <Card 
             variant="outlined"
         >
-            <Link to={`/movies/$`} >
+            <Link to={`/movies/${movie.id}`} >
                 <CardActionArea>
                     <CardMedia 
                         image={imagePrefix+movie.poster_path}
