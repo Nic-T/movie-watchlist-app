@@ -7,7 +7,6 @@ require('dotenv').config();
 
 
 router.get('/movies', async (req, res) => {
-    console.log("/movies has been called");
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1%22`;
     options ={
         "method": "GET",
@@ -21,7 +20,6 @@ router.get('/movies', async (req, res) => {
                 
             })
         })
-    console.log("RESPONSE", response);
     res.json(response);
 });
 
