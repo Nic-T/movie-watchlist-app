@@ -16,11 +16,10 @@ export default function MovieCard({ movie }) {
             <Link to={`/movies/${movie.id}`} >
                 <CardActionArea>
                     <CardMedia 
-                        image={imagePrefix+movie.poster_path}
-                        title={movie.title}
-                        className={styles.cardImage}
-                    >
-                    </CardMedia>
+                    component="img"
+                    className={styles.cardImage}
+                    image={imagePrefix+movie.poster_path}
+                    />
                 </CardActionArea>
             </Link>
         </Card>
