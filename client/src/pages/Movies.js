@@ -29,7 +29,6 @@ function Movies(){
 
     return (
         <div>
-           <button onClick={()=>console.log(movies)}> Click</button>
            <Grid
             container
             direction="row"
