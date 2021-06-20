@@ -13,7 +13,7 @@ function Movies(){
     
 
     const getMovies = async () =>{
-       await axios.get("http://localhost:5000/movies")
+       await axios.get("http://localhost:5000/movie")
             .then((res) =>{ 
                 setMovies(res.data.results)
                 setCheck(true)

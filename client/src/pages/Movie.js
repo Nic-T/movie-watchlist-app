@@ -9,20 +9,27 @@ function Movie() {
     const {id} = useParams();
 
     const [movie, setMovie] = useState([]);
-    const [check, setCheck]= useState(false)
+    const [check, setCheck] = useState(false);
+    const [credits, setCredits] = useState([]);
 
     const getMovie = async () =>{
-        await axios.get(`http://localhost:5000/movies/${id}`)
+        await axios.get(`http://localhost:5000/movie/${id}`)
             .then((res) =>{ 
                 setMovie(res.data.results)
-                setCheck(true)
-                
-                 
         })
     }
+
+    const getCredits = async () =>{
+        await axios.get(`http://localhost:5000/movie/${id}/credits`)
+            .then((res) =>{
+                setCredits(res.data.results)
+        })
+    }
+
     useEffect(() =>{
 
         getMovie();
+        getCredits();
 
     }, []);
 
