@@ -6,8 +6,9 @@ require('dotenv').config();
 
 
 
-router.get('/movies', async (req, res) => {
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1%22`;
+router.get('/:type', async (req, res) => {
+    const type = (req.params.type);
+    const url = `https://api.themoviedb.org/3/${type}/popular?api_key=${process.env.API_KEY}&language=en-US&page=1%22`;
     options ={
         "method": "GET",
     };
@@ -24,7 +25,7 @@ router.get('/movies', async (req, res) => {
 });
 
 
-
+ 
 
 
 module.exports = router
