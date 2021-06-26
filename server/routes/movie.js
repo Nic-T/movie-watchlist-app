@@ -21,6 +21,7 @@ router.get('/:type/:id',async (req, res) => {
         })
     res.json(response);
 
+    console.log(response)
 
 });
 

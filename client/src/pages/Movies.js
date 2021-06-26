@@ -10,14 +10,11 @@ function Movies(){
     const [movies, setMovies] = useState([]);
     const [check, setCheck] = useState(false)
 
-    
-
     const getMovies = async () =>{
        await axios.get("http://localhost:5000/movie")
             .then((res) =>{ 
                 setMovies(res.data.results)
                 setCheck(true)
-                
         })
     }
 

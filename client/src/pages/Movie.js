@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 function Movie() {
     
     const {id} = useParams();
-
+    const imagePath = "https://image.tmdb.org/t/p/w500"
     const [movie, setMovie] = useState([]);
     const [check, setCheck] = useState(false);
     const [credits, setCredits] = useState([]);
@@ -15,14 +15,15 @@ function Movie() {
     const getMovie = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}`)
             .then((res) =>{ 
-                setMovie(res.data.results)
+                console.log(res.data)
+                setMovie(res.data)
         })
     }
 
     const getCredits = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}/credits`)
             .then((res) =>{
-                setCredits(res.data.results)
+                setCredits(res.data)
         })
     }
 
@@ -36,7 +37,7 @@ function Movie() {
     
     return (
         <div>
-            <h1></h1>
+            <img src={imagePath+movie.backdrop_path} />
         </div>
     )
 }
