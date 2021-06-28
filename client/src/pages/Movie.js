@@ -11,6 +11,8 @@ function Movie() {
     const [movie, setMovie] = useState([]);
     const [check, setCheck] = useState(false);
     const [credits, setCredits] = useState([]);
+    const [images, setImages] = useState([])
+    const [rec, setRec] = useState([])
 
     const getMovie = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}`)
@@ -26,10 +28,27 @@ function Movie() {
         })
     }
 
+    const getImages = async () =>{
+        await axios.get(`http://localhost:5000/movie/${id}/images`)
+            .then((res) =>{
+                setImages(res.data.results)
+        })
+    }
+
+    const getRec = async () =>{
+        await axios.get(`http://localhost:5000/movie/${id}/rec`)
+            .then((res) =>{
+                setRec(res.data.results)
+        })
+    }
+
+
     useEffect(() =>{
 
         getMovie();
         getCredits();
+        getImages();
+        getRec();
 
     }, []);
 
