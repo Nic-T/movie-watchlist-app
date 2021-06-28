@@ -1,7 +1,7 @@
 const { response } = require('express');
 var express = require('express');
+var router = express.Router();
 const fetch = require('node-fetch');
-const router = require('./movie');
 require('dotenv').config();
 
 router.get('/:type/:id/credits', async (req, res) => {
