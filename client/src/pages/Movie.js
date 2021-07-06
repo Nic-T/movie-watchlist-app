@@ -11,37 +11,53 @@ function Movie() {
     const [movie, setMovie] = useState([]);
     const [check, setCheck] = useState(false);
     const [credits, setCredits] = useState([]);
-    const [images, setImages] = useState([])
-    const [rec, setRec] = useState([])
+    const [images, setImages] = useState([]);
+    const [rec, setRec] = useState([]);
+    const [similar, setSimilar] =useState([]);
+    const [release, setRelease] = useState([]);
+
 
     const getMovie = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}`)
             .then((res) =>{ 
-                setMovie(res.data.results)
+                setMovie(res.data)
         })
     }
 
     const getCredits = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}/credits`)
             .then((res) =>{
-                setCredits(res.data.results)
+                setCredits(res.data)
         })
     }
 
     const getImages = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}/images`)
             .then((res) =>{
-                setImages(res.data.results)
+                setImages(res.data)
         })
     }
 
     const getRec = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}/rec`)
             .then((res) =>{
-                setRec(res.data.results)
+                setRec(res.data)
         })
     }
 
+    const getSimilar = async () =>{
+        await axios.get(`http://localhost:5000/movie/${id}/similar_movies`)
+            .then((res) =>{
+                setSimilar(res.data)
+        })
+    }
+
+    const getRelease = async () =>{
+        await axios.get(`http://localhost:5000/movie/${id}/release_date`)
+            .then((res) =>{
+                setRelease(res.data)
+            })
+    }
 
     useEffect(() =>{
 
@@ -49,7 +65,8 @@ function Movie() {
         getCredits();
         getImages();
         getRec();
-
+        getSimilar();
+        getRelease();
     }, []);
 
     

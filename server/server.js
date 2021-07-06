@@ -4,6 +4,8 @@ const movieRouter = require("./routes/movie");
 const creditsRouter = require("./routes/credits");
 const imageRouter = require("./routes/images");
 const recRouter = require("./routes/recommendations");
+const releaseRouter = require("./routes/release_date");
+const similarRouter = require("./routes/similar_movies");
 const cors = require('cors');
 const app = express();
 
@@ -14,7 +16,8 @@ app.use('/', movieRouter);
 app.use('/', creditsRouter);
 app.use('/', imageRouter);
 app.use('/', recRouter);
-
+app.use('/', releaseRouter);
+app.use('/', similarRouter);
 
 app.listen(5000, err => {
 
