@@ -15,7 +15,8 @@ function Movie() {
     const [rec, setRec] = useState([]);
     const [similar, setSimilar] =useState([]);
     const [release, setRelease] = useState([]);
-
+    const [video, setVideos] = useState([])
+    const imagePrefix ='https://image.tmdb.org/t/p/w500'
 
     const getMovie = async () =>{
         await axios.get(`http://localhost:5000/movie/${id}`)
@@ -58,21 +59,29 @@ function Movie() {
                 setRelease(res.data)
             })
     }
+    const getVideos = async() =>{
+        await axios.get(`http://localhost:5000/movie/${id}/videos`)
+            .then((res) =>{
+                setVideos(res.data)
+            })
+    }
 
     useEffect(() =>{
-
         getMovie();
         getCredits();
         getImages();
         getRec();
         getSimilar();
         getRelease();
+        getVideos();
     }, []);
 
     
     return (
         <div>
-            <h1></h1>
+            <h1>{movie.title}</h1>
+            <p>{movie.overview}</p>
+            <img src={imagePrefix+movie.poster_path} height="562.5" width="375"/>
         </div>
     )
 }
